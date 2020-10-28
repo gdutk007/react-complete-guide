@@ -3,8 +3,8 @@ import './../css/styles.css'
 
 const CharComponent = (props) => {
     return(
-        <div className="charcomponent">
-            <h1> The letter is: {props.letter} </h1>
+        <div  onClick={props.click} className="charcomponent">
+            <h1> {props.letter} </h1>
         </div>
     );
 }

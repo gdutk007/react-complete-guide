@@ -6,8 +6,8 @@ import CharComponent from './Components/CharComponent'
 class App extends Component {
   
   state = {
-    textbox: "Enter Your Text Here...",
-    count : 10,
+    textbox: 'Enter a word...',
+    count : 0,
   }
 
   TextHandler = (event) => {
@@ -19,13 +19,34 @@ class App extends Component {
     this.setState({
                    textbox: text,
                    count: currentcount
-     })
+    })
+  }
+
+  deleteCharHandler = (index) =>{
+    const str= this.state.textbox.split('')
+    str.splice(index,1)
+    const newstr = str.join('')
+    this.setState({textbox: newstr,
+                  count:   newstr.length})
   }
 
   render(){
-    let letter = "s";
-    const s = "hello"
-    
+  
+  let charlist = this.state.textbox.split('')
+  charlist = (
+    <div>
+      {charlist.map( (ch,index)=>{
+        return (
+              <CharComponent
+               key={index}
+               click={()=> this.deleteCharHandler(index)}
+               letter={ch}
+               />
+        );
+      }) }
+    </div>
+  );
+
     return (
       <div >
           <input type="text" onChange={this.TextHandler} value={this.state.textbox} />
@@ -33,8 +54,8 @@ class App extends Component {
             The lengh of the string is:{this.state.count} 
           </p>
           <ValidationComponent count={this.state.count} />
-          <CharComponent letter={letter}  />
-          {charlist}
+          { charlist }
+          {}
       </div>
     );
   }
