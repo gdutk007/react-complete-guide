@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 import './App.css';
 import ValidationComponent from './Components/ValidationComponent'
 import CharComponent from './Components/CharComponent'
@@ -47,8 +48,23 @@ class App extends Component {
     </div>
   );
 
+  const style ={
+      backgroundColor: 'green',
+      color:           'white',
+      font:            'inherit',
+      border:          '1px solid blue',
+      padding:         '8px',
+      cursor:          'pointer',
+      ':hover':{
+        backgroundColor: 'lightgreen',
+      }
+  };
+
     return (
       <div >
+          
+          <button style={style} > This is a button </button>
+          <b/>
           <input type="text" onChange={this.TextHandler} value={this.state.textbox} />
           <p>
             The lengh of the string is:{this.state.count} 
@@ -61,4 +77,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
