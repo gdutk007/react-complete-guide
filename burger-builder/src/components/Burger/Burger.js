@@ -20,12 +20,6 @@ const Burger = (props) => {
     return(
         <div className={style.Burger}>
             <BurgerIngredient type='breadtop'/>
-            <BurgerIngredient type='meat'/>
-            <BurgerIngredient type='salad'/>
-            <BurgerIngredient type='cheese'/>
-            <BurgerIngredient type='breadbottom'/>
-            <hr/>
-            <BurgerIngredient type='breadtop'/>
             {ingredients}
             <BurgerIngredient type='breadbottom'/>
         </div>
